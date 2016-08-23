@@ -134,7 +134,8 @@ function MainCtrl($http, $filter, $timeout) {
             return;
         }
 
-        $http.get('http://dselkirk.getsandbox.com/users')
+        // $http.get('http://dselkirk.getsandbox.com/users')
+        $http.get('http://vofus.gq/angular-1000-rows/users.json')
         .success(function(data) {
             console.info('Load data from URL!');
             // var data = data.splice(0, 30),
