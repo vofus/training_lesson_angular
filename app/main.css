@@ -1,0 +1,41 @@
+table {
+  margin-top: 140px;
+}
+.saidbar {
+	position: fixed;
+    margin: 170px 10px 0;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 6px;
+}
+tr {
+  cursor: pointer;
+}
+.table__users>tbody>tr:hover {
+	background-color: #5cb85c;
+}
+.table__users>tbody>tr>td {
+	vertical-align: middle;
+}
+.sort-btns {
+	margin-bottom: 15px;
+}
+.sort-btns>button[data-sort] {
+	width: 120px;
+}
+.saidbar__description>dt {
+	width: 60px;
+}
+.saidbar__description>dd {
+	margin-left: 70px;
+}
+.photo-fake {
+	width: 300px;
+	height: 300px;
+	background-color: #eee;
+}
+.current-page {
+    display: inline-block;
+    margin: 0 10px;
+    font-weight: 900;
+}

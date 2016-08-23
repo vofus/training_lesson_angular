@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Angular with Webpack</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+  
+	<div id="myApp" class="container" ng-controller="MainCtrl as mainCtrl">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						 <form>
+		                    <div class="form-group">
+		                        <label>Filter users for first name</label>
+		                        <input id="filterInput"
+									   class="form-control"
+									   type="text"
+									   placeholder="Filter users..."
+									   ng-model="mainCtrl.state.filterText"
+									   ng-keyup="mainCtrl.keyupHendler()"
+								/>
+		                    </div>
+		                </form>
+					</div><!-- //.col -->
+					<div class="col-md-3">
+						<div class="sort-btns btn-group" role="group" ng-click="mainCtrl.sortBtnsHendler()">
+			                <button data-sort='up' type="button" class="btn btn-default">Sort UP</button>
+			                <button data-sort='down' type="button" class="btn btn-default">Sort DOWN</button>
+			            </div>
+					</div><!-- //.col -->
+					<div class="col-md-3">
+						<div class='paginator' ng-click="mainCtrl.pageNavigator()">
+							<button class='nav-btn btn btn-default' data-nav='prev'>Prev page</button>
+							<span class='current-page' ng-bind-template="{{ mainCtrl.state.currentPage }}"></span> - <span class='current-page' ng-bind-template="{{ mainCtrl.state.allPages }}"></span>
+							<button class='nav-btn btn btn-default' data-nav='next'>Next page</button>
+						</div>
+					</div><!-- //.col -->
+				</div><!-- //.row -->
+			</div><!-- //.container -->
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<table class='table__users table table-striped'>
+						<thead>
+							<tr>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>Avatar</th>
+							</tr>
+						</thead>
+						<tbody ng-click="mainCtrl.clickRowHandler()">
+							<tr data-select="{{ item.id }}" ng-repeat="item in mainCtrl.state.pageValue track by item.id">
+			                    <td ng-bind-template="{{ item.first_name }}"></td>
+								<td ng-bind-template="{{ item.last_name }}"></td>
+			                    <td><img src="{{ item.avatar }}" width='50' height='50'/></td>
+			                </tr>
+						</tbody>
+					</table>
+				</div><!-- //.col -->
+				<div class="col-md-4">
+					<div class='saidbar'>
+						<dl class="saidbar__description dl-horizontal">
+							<dt>Name:</dt>
+							<dd>
+								<span ng-bind-template="{{ mainCtrl.state.selectUser.first_name }}"></span>
+								<span ng-bind-template="{{ mainCtrl.state.selectUser.last_name }}"></span>
+							</dd>
+						</dl>
+						<dl class="saidbar__description dl-horizontal">
+							<dt>Gender:</dt>
+							<dd ng-bind-template="{{ mainCtrl.state.selectUser.gender }}"></dd>
+						</dl>
+						<dl class="saidbar__description dl-horizontal">
+							<dt>Email:</dt>
+							<dd ng-bind-template="{{ mainCtrl.state.selectUser.email }}"></dd>
+						</dl>
+						<img src="{{ mainCtrl.state.selectUser.avatar }}" width='300' height='300'/>
+					</div>
+				</div><!-- //.col -->
+			</div><!-- //.row -->
+		</div><!-- //.container -->
+	</div><!-- //.container -->
+
+    <script src="bundle.js"></script>
+</body>
+</html>
